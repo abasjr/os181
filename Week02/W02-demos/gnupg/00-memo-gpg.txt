@@ -1,0 +1,43 @@
+REV00 Tue Sep 13 11:40:03 WIB 2016
+START Fri Sep  9 20:06:17 WIB 2016
+==================================
+
+# Generate A Key Pair
+gpg --gen-key 
+
+# List Keys
+gpg --list-keys
+
+# Generate Revocation Certificate
+gpg --gen-revoke --armor --output=DemoRevocationCertificate.asc demo@localhost
+
+# Export A Public Key
+gpg --armor --export --output=DemoPubKey.asc demo@localhost
+
+# Import Public Keys
+gpg --import file-of-keys.x
+
+# Generate SHA256SUM
+sha256sum [0-D]* > SHA256SUM
+
+# Verify SHA256SUM
+sha256sum -c SHA256SUM
+
+# Sign SHA256SUM
+gpg --armor --output SHA256SUM.sig --detach-sig SHA256SUM
+
+# Verify SHA256SUM 
+gpg --verify SHA256SUM.sig
+
+# Sending and Receiving Keys
+gpg --keyserver pgp.mit.edu --send-keys  E085A285
+gpg --keyserver pgp.mit.edu --recv-keys  E085A285
+
+# Fingerprint
+gpg --fingerprint
+
+# Public Key (A) = mQINBFm/PbYBEADMfcjEH/Z ..... BpT7aJGqrmmWo= =TNbo
+# Fingerprint ID = B9F7 7043 EBA5 3786 ED8E  5B9E 9971 BA3F E085 A285
+# Long        ID =                                9971 BA3F E085 A285
+# Short       ID =                                          E085 A285
+

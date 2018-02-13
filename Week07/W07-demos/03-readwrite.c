@@ -1,0 +1,72 @@
+/*
+ * (c) 2011-2017 Rahmat M. Samik-Ibrahim
+ * http://rahmatm.samik-ibrahim.vlsm.org/
+ * This is free software.
+ * REV02 Wed Nov  1 16:53:38 WIB 2017
+ * REV01 Wed Nov  2 13:49:55 WIB 2016
+ * REV00 Xxx Sep 30 XX:XX:XX UTC 2015
+ * START Xxx Mar 30 02:13:01 UTC 2011
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "99-myutils.h"
+
+#define R_REHAT 4000
+#define R_READ  4000
+#define R_JUMLAH   4
+
+#define W_REHAT 2000
+#define W_WRITE 2000
+#define W_JUMLAH   3
+
+#define aReader 0
+#define aWriter 1
+
+void* Reader (void* a) {
+   int  my_ID;
+
+   my_ID = getADDglobalID(aReader);
+   printf   ("                        READER %d: SIAP  ******\n", my_ID);
+   while (TRUE) {
+      printf("                        READER %d: REHAT ******\n", my_ID);
+      rehat_acak(R_REHAT);
+      printf("                        READER %d: MAU  MEMBACA\n", my_ID);
+      printf("                        ***** JUMLAH PEMBACA %d\n", startRead());
+      printf("                        READER %d:=SEDANG==BACA\n", my_ID);
+      rehat_acak(R_READ);
+      printf("                        READER %d: SELESAI BACA\n", my_ID);
+      printf("                        ***** SISA PEMBACA %d\n", endRead());
+   }
+}
+
+void* Writer (void* a) {
+   int  my_ID;
+
+   my_ID = getADDglobalID(aWriter);
+   printf   ("WRITER %d: SIAP  *******\n", my_ID);
+   while (TRUE) {
+      printf("WRITER %d: REHAT *******\n", my_ID);
+      rehat_acak(W_REHAT);
+      printf("WRITER %d: MAU   MENULIS\n", my_ID);
+      startWrite();
+      printf("WRITER %d:=SEDANG==NULIS\n", my_ID);
+      rehat_acak(W_WRITE);
+      endWrite();
+      printf("WRITER %d: SELESAI NULIS\n", my_ID);
+   }
+}
+
+int main(int argc, char * argv[])
+{
+   int ii;
+   init_rw();
+   init_globalID();
+   for (ii = 0 ; ii < R_JUMLAH; ii++)
+      daftar_trit(Reader);
+   for (ii = 0 ; ii < W_JUMLAH; ii++)
+      daftar_trit(Writer);
+   jalankan_trit();
+   beberes_trit("Selese...");
+}
+

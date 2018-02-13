@@ -1,0 +1,50 @@
+#!/bin/bash
+# REV03: Mon Feb 12 19:51:51 WIB 2018
+# REV02: Fri Sep  8 21:58:19 WIB 2017
+# START: Thu Aug 18 19:52:29 WIB 2016
+
+# R: Just run "bash a10-mysha1"
+
+# Copyright (C) 2016-2018 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# (c) 2016 Rahmat M. Samik-Ibrahim
+# This is a free script, lah!
+
+REGEX='^[0-9]+$'
+ONE='1'
+TEN='10'
+ID=$1
+
+# No argument? Ask student ID
+[[ $# =~ $ONE ]] || {
+   echo "Enter student ID (NPM)"
+   read ID
+}
+
+# Is it all digits ?
+[[ $ID =~ $REGEX ]] || {
+   echo "This is not a number"
+   exit 1
+}
+
+# Is it a 10 digit ID?
+[[ ${#ID} =~ $TEN ]] || {
+   echo "Not 10 digits"
+   exit 1
+}
+
+# Print student ID and its SHA1SUM hash
+echo "Student ID (NPM): $ID"
+SHA1SUM=`echo "$ID" | sha1sum`
+echo "SHA1SUM=$SHA1SUM"
+CUT=`echo $SHA1SUM |  cut -c1-10`
+echo "CUT=$CUT"
+TRANS=`echo $CUT | tr '[a-z]' '[A-Z]'`
+echo "TRANS=$TRANS"
+echo "Student ID HASH:  0$TRANS"
+
+exit 0
+

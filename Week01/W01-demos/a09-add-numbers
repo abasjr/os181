@@ -1,0 +1,36 @@
+#!/bin/bash
+# REV03: Mon Feb 12 20:03:28 WIB 2018
+# REV02: Fri Sep  8 21:58:04 WIB 2017
+# START: Mon Sep  5 14:44:23 WIB 2016
+
+# R: Add line numbers to a file. Run "bash a09-add-numbers .thisfile.tx"
+
+# Copyright (C) 2016-2018 Rahmat M. Samik-Ibrahim 
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+PREFIX="^#.R:"
+RESULT=`grep $PREFIX $0`
+clear
+if [[ $RESULT ]] ; then
+   printf "\n[%11s]: %s\n" "`cut -c 1-11 <<< $0`" "$RESULT"
+fi
+echo ""; 
+
+[ -f "$1" ] || {
+   echo "File $1 does not exist"
+   exit -1
+}
+
+awk '
+BEGIN {
+   lll=1
+}
+{
+   printf "%3.3d %s\n", lll++, $0
+}' $1 > $1.txt
+
+exit
+

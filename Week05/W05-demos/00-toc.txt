@@ -1,0 +1,20 @@
+REV00 Mon Oct  3 13:27:01 WIB 2016
+START Mon Oct  3 11:47:46 WIB 2016
+(c) 2016 Rahmat M. Samik-Ibrahim -- This is a free document.
+============================================================
+
+* Login to "badak.cs.ui.ac.id" with your SSO account.
+* Learn (man, google, etc) how to use the command "top".
+* (If exists) delete OR rename file ~/.toprc
+* See picture 01-top.jpg, 02-top.jpg, 03-top.jpg, 04-top.jpg, 05-top.jpg
+* Arrange "top" until it display only:
+  PID, PPID, %MEM, VIRT, RES, SHR, SWAP, CODE, DATA, USED.
+* Do not forget to save the configuration by using "W" into "~/.toprc"
+* Create folder "work05/"
+* Copy program "06-memory.c" and "Makefile".
+* Make program 06-memory 
+* Run program 06-memory > 07-result.txt
+* Give comments in "08-comments.txt"
+* Make a tarbal of folder "work05/"
+* Encrypt and submit it.
+

@@ -1,0 +1,56 @@
+#!/bin/bash
+# REV05: Mon Feb 12 19:50:11 WIB 2018
+# START: Mon Sep  5 14:28:02 WIB 2016
+
+# R: Just run "bash a08-append-a-file"
+
+# Copyright (C) 2016-2018 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+TMPFILE=".thisfile.txt"
+
+PREFIX="^#.R:"
+RESULT=`grep $PREFIX $0`
+clear
+if [[ $RESULT ]] ; then
+   printf "\n[%11s]: %s\n" "`cut -c 1-11 <<< $0`" "$RESULT"
+fi
+echo ""; 
+/bin/rm -f $TMPFILE
+sleep 1
+
+# ############################################
+echo "APPENDING: into $TMPFILE =============="
+for ii in f1 f2 
+do
+   echo "Appending: $ii"
+   echo -n "$ii " >> $TMPFILE
+done
+# ############################################
+for ii in f3 f4 f5 f6
+do
+   echo "Appending: $ii"
+   echo "$ii " >> $TMPFILE
+done
+sleep 1
+
+# #################################################
+echo "============================================"
+echo "FILE: $TMPFILE"
+cat $TMPFILE
+
+# #################################################
+echo "============================================"
+echo "Displaying word by word of $TMPFILE ==="
+JJ=0
+for ii in `cat $TMPFILE`
+do
+   JJ=$((JJ + 1))
+   echo "Word($JJ): $ii"
+done
+
+exit 0
+

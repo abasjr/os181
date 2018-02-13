@@ -1,0 +1,34 @@
+#!/bin/bash
+# REV04: Mon Feb 12 19:48:39 WIB 2018
+# START: Mon Sep  5 14:34:41 WIB 2016
+
+# R: Just run "bash a04-loop 11 22 33 44"
+
+# Copyright (C) 2016-2018 http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+PREFIX="^#.R:"
+RESULT=`grep $PREFIX $0`
+clear
+if [[ $RESULT ]] ; then
+   printf "\n[%11s]: %s\n" "`cut -c 1-11 <<< $0`" "$RESULT"
+fi
+echo ""; 
+
+echo "============="
+echo 'Loop with [*]'
+for ii in "$*"
+do
+   echo $ii
+done
+
+echo "=============="
+echo 'Loop with [@]'
+for ii in "$@"
+do
+   echo $ii
+done
+exit 0
+

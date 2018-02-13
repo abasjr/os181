@@ -1,0 +1,29 @@
+REV03 Thu Mar  2 09:44:42 WIB 2017
+START Tue Feb 28 09:04:13 WIB 2017 
+==================================
+
+##########################################
+systemctl start [name.service]
+systemctl stop [name.service]
+systemctl restart [name.service]
+systemctl reload [name.service]
+systemctl status [name.service]
+systemctl is-active [name.service]
+systemctl list-units --type service --all
+##########################################
+systemctl list-unit-files
+systemd-analyze blame
+##########################################
+systemctl list-units
+systemctl list-units | grep .service 
+systemctl list-units | grep ssh.service
+systemctl status ssh.service
+systemctl is-enabled ssh
+journalctl
+journalctl -b
+##########################################
+
+REF:
+- https://www.youtube.com/watch?v=AtEqbYTLHfs
+- https://www.linux.com/learn/understanding-and-using-systemd
+

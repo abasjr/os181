@@ -1,0 +1,94 @@
+# (c) 2011-2017 Rahmat M. Samik-Ibrahim
+# http://rahmatm.samik-ibrahim.vlsm.org/
+# This is free software. Feel free to copy and / or 
+# modify and/or distribute it, provided this notice, 
+# and the copyright notice, are preserved. 
+
+# REV05 Fri Nov 10 18:15:22 WIB 2017
+# REV02 Fri Apr 28 19:11:50 WIB 2017
+# REV00 Xxx Sep 30 XX:XX:XX UTC 2015
+# START Xxx Mar 30 02:13:01 UTC 2011
+
+P00=00-thread
+P01=01-thread
+P02=02-prodkon
+P03=03-readwrite
+P04=04-readwrite
+P05=05-alu
+P06=06-balap
+P07=07-sudokuSV
+P08=08-mainDadu
+P09=09-rpsls
+P10=10-kirikanan
+P11=11-thread
+
+P99=99-myutils
+
+CC=gcc
+CFLAGS=-std=gnu99
+CCLNK=-pthread -lrt
+DEPS=Makefile $(P99).c $(P99).h
+ODEP=$(P99).o
+
+ 
+EXECS= \
+	$(P00) \
+
+
+DUMDUM=\
+	$(P01) \
+	$(P02) \
+	$(P03) \
+	$(P04) \
+	$(P05) \
+	$(P06) \
+	$(P07) \
+	$(P08) \
+	$(P09) \
+	$(P10) \
+	$(P11) \
+
+
+
+all:	$(EXECS)
+
+
+$(EXECS): %: %.o $(ODEP)
+	$(CC) $(CFLAGS) $< -o $@ 
+
+
+$(EXECS): %: %.c $(DEPS)
+	$(CC) $(CFLAGS) $< -o $@ 
+
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+hellomake: $(OBJ)
+	gcc $^ $(CFLAGS) -o $@ 
+
+
+$(P00): $(P00).o $(P99).o
+	$(CC) $(CCOPT) $(P00).o $(P99).o $(CCLNK) -o $(P00)
+
+$(P00).o: $(P00).c $(P99).h
+	$(CC) -c $(CCOPT) $(P00).c
+
+$(P01): $(P01).o $(P99).o
+	$(CC) $(CCOPT) $(P01).o $(P99).o $(CCLNK) -o $(P01)
+
+$(P01).o: $(P01).c $(P99).h
+	$(CC) -c $(CCOPT) $(P01).c
+
+
+
+$(P99).o: $(P99).c $(P99).h
+	$(CC) -c $(CCOPT) $(P99).c
+
+clean:
+	rm -f $(EXECS)
+	rm -f $(OBJ)
+
+
+########################
+
+

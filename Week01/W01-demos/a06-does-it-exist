@@ -1,0 +1,31 @@
+#!/bin/bash
+# REV03: Mon Feb 12 19:49:34 WIB 2018
+# START: Mon Sep  4 16:42:56 WIB 2017
+
+# R: Does ".thisfile.txt" exists? Run "bash a06-does-it-exist"
+
+# Copyright (C)2017-2018 Rahmat M. Samik-Ibrahim
+# http://RahmatM.Samik-Ibrahim.vLSM.org/
+# This program is free script/software. This program is distributed in the hope 
+# that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+PREFIX="^#.R:"
+RESULT=`grep $PREFIX $0`
+clear
+if [[ $RESULT ]] ; then
+   printf "\n[%11s]: %s\n" "`cut -c 1-11 <<< $0`" "$RESULT"
+fi
+echo ""; 
+
+FILE=".thisfile.txt"
+[ -f $FILE ] && {
+  echo "$FILE EXISTS!"
+}
+[ -f $FILE ] || {
+  echo "$FILE does not EXISTS!"
+}
+echo ""
+
+exit
+
