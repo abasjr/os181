@@ -17,4 +17,3 @@ START Mon Oct  3 11:47:46 WIB 2016
 * Give comments in "08-comments.txt"
 * Make a tarbal of folder "work05/"
 * Encrypt and submit it.
-
