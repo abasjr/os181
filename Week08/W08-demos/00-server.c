@@ -1,4 +1,5 @@
 /*
+ * Updated by Anggit Baskorojati
  * (c) 2007-2016 Rahmat M. Samik-Ibrahim -- This is free software
  * This program was copased from the net and hacked until it works.
  * Feel free to copy and/or modify and/or distribute it, 
