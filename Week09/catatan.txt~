@@ -1,0 +1,29 @@
+FUSE : File system in user space
+berguna: mengendalikan akses terhadap data yang ada pada hardisk
+
+fuse_main()(lib/helper.c)
+fuse_mount() (lib/mount.c)
+fusermount() (util/fusermount.c)
+fuse_new() (lib/fuse.c) 
+fuse_loop() (lib/fuse.c)
+
+.getattr        = xmp_getattr,  	  => mengambil atribut file
+.access         = xmp_access,         => mengambil direktori
+.readlink       = xmp_readlink,  	  => membaca target dari symbolic link
+.readdir        = xmp_readdir,        => membaca direktori
+.mknod          = xmp_mknod,     	  => membuka node file
+.mkdir          = xmp_mkdir,          => membuat directory
+.symlink        = xmp_symlink,   	  => membua symbolic link
+.unlink         = xmp_unlink,         => menghapus file
+.rmdir          = xmp_rmdir,          => menghapus directory
+.rename         = xmp_rename,    	  => memperbaharui nama file
+.link           = xmp_link,           => menciptakan hardlink ke file
+.chmod          = xmp_chmod,          => mengubah permission file
+.chown          = xmp_chown,     	  => mengubah kepemilikan file
+.truncate       = xmp_truncate,   	  => merubah ukuran file
+.utimens        = xmp_utimens,	      => mengubah akses dan modifikasi waktu dari file dengan resolusi nanosecond
+.open           = xmp_open,           => membuka file
+.read           = xmp_read,           => membaca data dari file yang dibuka
+.write          = xmp_write,          => menulis data ke file yang telah dibuka
+.release        = xmp_release,        => melepaskan file yang sudah dibuka
+.fsync          = xmp_fsync,          => sinkronisasi isi file 
