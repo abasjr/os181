@@ -27,5 +27,3 @@ fuse_loop() (lib/fuse.c)
 .write          = xmp_write,          => menulis data ke file yang telah dibuka
 .release        = xmp_release,        => melepaskan file yang sudah dibuka
 .fsync          = xmp_fsync,          => sinkronisasi isi file 
-
-lynx:

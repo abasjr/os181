@@ -29,7 +29,7 @@ B. fuse-tutorial
    lynx index.html
 
 6. Run
-   ./configure  
+   ./configure      
    make
 
 7  cd example
