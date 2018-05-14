@@ -1,0 +1,13 @@
+Algoritma diperlukan untuk mengatur giliran proses-proses yang ada di ready queue yang mengantri untuk dialokasikan ke CPU. Terdapat berbagai macam algoritma, antara lain:
+
+First Come First Serve. Algoritma ini mendahulukan proses yang lebih dulu datang. Kelemahannya, waiting time rata-rata cukup lama.
+
+Shortest Job First. Algoritma ini mendahulukan proses dengan CPU burst terkecil sehingga akan mengurangi waiting time rata-rata.
+
+Priority Scheduling. Algoritma ini mendahulukan prioritas terbesar. Kelemahannya, prioritas kecil tidak mendapat jatah CPU Hal ini dapat diatasi dengan aging yaitu semakin lama lama menunggu, prioritas semakin tinggi.
+
+Round Robin. Algoritma ini menggilir proses-proses yang ada diantrian dengan jatah time quantum yang sama. Jika waktu habis, CPU dialokasikan ke proses selanjutnya.
+
+Multilevel Queue. Algoritma ini membagi beberapa antrian yang akan diberi prioritas berdasarkan tingkatan. Tingkatan lebih tinggi menjadi prioritas utama.
+
+Multilevel Feedback Queue. Pada dasarnya sama dengan Multilevel Queue, yang membedakannya adalah pada algoritma ini diizinkan untuk pindah antrian.
